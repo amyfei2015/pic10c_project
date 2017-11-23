@@ -4,6 +4,7 @@
 #include <QGraphicsScene>
 #include <Qtimer>
 #include <QObject>
+#include <QList>
 
 void player::keyPressEvent(QKeyEvent *event)
 {
@@ -29,16 +30,34 @@ void player::keyPressEvent(QKeyEvent *event)
             setPos(x(),y()+10);
     }
 
+    QList<QGraphicsItem *> colliding_items = collidingItems();
+    for(int i = 0,n = colliding_items.size();i<n;++i){
+        if (typeid(*(colliding_items[i])) == typeid(treasure)){
+            //remove treasure and treasure_count ++1;
+            scene() -> removeItem(colliding_items[i]);
+            delete colliding_items[i];
+        }
+
+        if (typeid(*(colliding_items[i])) == typeid(soldier1)){
+            //move back player to center, lives lost one
+            setPos(600/2-10,600/2-10);
+        }
+
+        if (typeid(*(colliding_items[i])) == typeid(soldier2)){
+            //remove treasure and treasure_count ++1;
+            //move back player to center, lives lost one
+            setPos(600/2-10,600/2-10);
+        }
+
+    }
+
 
 }
 
 
 soldier1::soldier1()
 {
-    //we need two random numbers to set its location
-    int s1 = rand() % 570 + 5 ;//we dont want soldiers to be at corners
-    int  s2 = rand() % 570 + 5 ;
-    setRect(s1,s2,20,20);
+   setRect(0,0,15,25);
 
 }
 
@@ -47,24 +66,21 @@ soldier1::soldier1()
 soldier2::soldier2()
 {
 
-    // create the soldier
-    //we need two random numbers to set its location
-    int s1 = rand() % 570 + 5 ;//we dont want soldiers to be at corners
-    int  s2 = rand() % 570 + 5 ;
-    setRect(s1,s2,20,20);
+    setRect(0,0,20,25);
 
 
     //keep it moving
     QTimer * timer = new QTimer();
     connect(timer,SIGNAL(timeout()),this,SLOT(random_move()));
-    timer -> start(100);
+    timer -> start(200);
 
 }
 
 
-
 void soldier2::random_move(){
     setPos(x(),y()-10);
+    if (y() <0)
+        setPos(x(),590);
 }
 
 
@@ -83,7 +99,5 @@ void add_soldier1(int number)
 
 treasure::treasure()
 {
-    int s1 = rand() % 570 + 5 ;//we dont want soldiers to be at corners
-    int  s2 = rand() % 570 + 5 ;
-    setRect(s1,s2,20,20);
+    setRect(0,0,10,10);
 }
