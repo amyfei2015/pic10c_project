@@ -62,14 +62,17 @@ int main(int argc, char *argv[])
          scene -> addItem (treasures[i]);
      }
 
-    //make rect focusable
+
+     //add a counter for trasure collected
+     treasure_collected* tc = new treasure_collected();
+     scene -> addItem(tc);
+
+
+
+
+     //make rect focusable
     plr-> setFlag(QGraphicsItem::ItemIsFocusable);
     plr -> setFocus();
-
-
-
-    //add treasures
-    //add a door
 
 
 

@@ -2,9 +2,10 @@
 #include <QKeyEvent>
 #include <cstdlib>
 #include <QGraphicsScene>
-#include <Qtimer>
+#include <QTimer>
 #include <QObject>
 #include <QList>
+#include <QFont>
 
 void player::keyPressEvent(QKeyEvent *event)
 {
@@ -100,4 +101,25 @@ void add_soldier1(int number)
 treasure::treasure()
 {
     setRect(0,0,10,10);
+}
+
+treasure_collected::treasure_collected(QGraphicsTextItem *parent):QGraphicsTextItem(parent){
+    //initialize the number to 0
+    tc = 0;
+
+    //draw the text
+    setPlainText(QString("Treasure collected:") + QString::number(tc));
+    setDefaultTextColor(Qt::black);
+    setFont(QFont("times",15));
+
+}
+
+void treasure_collected::increase()
+{
+    ++tc;
+}
+
+int treasure_collected::get_treasure()
+{
+    return tc;
 }

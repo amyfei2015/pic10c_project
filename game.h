@@ -1,8 +1,8 @@
-#ifndef GAME_H
+﻿#ifndef GAME_H
 #define GAME_H
 #include <QGraphicsRectItem>
 #include <QObject>
-
+#include <QGraphicsTextItem>
 
 class player: public QGraphicsRectItem{
 
@@ -22,16 +22,6 @@ public:
 };
 
 
-class treasure:public QGraphicsRectItem{
-public:
-    treasure();
-
-};
-
-
-
-
-
 class soldier2: public QObject, public QGraphicsRectItem{
     Q_OBJECT
 public:
@@ -41,6 +31,24 @@ public slots:
 };
 
 
+
+class treasure:public QGraphicsRectItem{
+public:
+    treasure();
+
+};
+
+
+class treasure_collected: public QGraphicsTextItem{
+public:
+    treasure_collected(QGraphicsTextItem * parent = 0);
+    void increase();
+    int get_treasure();
+private:
+    int tc;
+
+
+};
 
 
 //void add_soldier1 (int number);
