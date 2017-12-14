@@ -1,4 +1,5 @@
 #include "game.h"
+#include "gameboard.h"
 #include <QKeyEvent>
 #include <cstdlib>
 #include <QGraphicsScene>
@@ -6,6 +7,11 @@
 #include <QObject>
 #include <QList>
 #include <QFont>
+
+#include <QDebug>//for debuging
+
+extern Game* game;
+
 
 void player::keyPressEvent(QKeyEvent *event)
 {
@@ -44,7 +50,8 @@ void player::keyPressEvent(QKeyEvent *event)
             tc -> increase(); // it doesn't work
             */
             //second try: in fact, I can/should make it a static int
-
+            ++ treasure_collected::treasure_count;
+            game->tc->shownewcount();//need to be fixed
 
 
             delete colliding_items[i];
@@ -114,23 +121,35 @@ treasure::treasure()
     setRect(0,0,10,10);
 }
 
+
+
 treasure_collected::treasure_collected(QGraphicsTextItem *parent):QGraphicsTextItem(parent){
     //initialize the number to 0
-    tc = 0;
 
     //draw the text
-    setPlainText(QString("Treasure collected:") + QString::number(tc));
+    setPlainText(QString("Treasure collected:") + QString::number(treasure_count));
     setDefaultTextColor(Qt::blue);
     setFont(QFont("times",16));
 
 }
 
-void treasure_collected::increase()
+int treasure_collected :: treasure_count = 0;
+
+void treasure_collected::shownewcount()
 {
-    ++tc;
+
+    setPlainText(QString("Treasure collected:") + QString::number(treasure_collected::treasure_count));
+    setDefaultTextColor(Qt::blue);
+    setFont(QFont("times",16));
+
+
+    qDebug()<<"wrong?";
 }
+
+
 
 int treasure_collected::get_treasure()
 {
-    return tc;
+    return treasure_count;
 }
+

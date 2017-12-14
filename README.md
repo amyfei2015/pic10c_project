@@ -1,6 +1,9 @@
 # pic10c_project
 For final project
 
+
+I WILL FINISH EVRYTHING BY FRADAY 5PM! IT'S STILL AN ONGOING PROJECT. 
+
 After walting many Qt game tutorials and former c++ projects on Youtube, I decided to create a game, where players need to collect treasures without being caught by soldiers.
 
 
@@ -16,6 +19,7 @@ template// well???
 functors//good idea for Qt???
 polymorohism //probably I can do it for soldier
 smart_ptrs //not doing it for Qt classes, or can I?
+static:used;
 
 
 

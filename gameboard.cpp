@@ -3,7 +3,7 @@
 #include <QGraphicsTextItem>
 #include <QFont>
 
-extern Game* game;
+
 
 Game::Game(QWidget *parent){
     srand(time(NULL));

@@ -4,14 +4,14 @@
 #include <QGraphicsView>
 #include <cstdlib>
 
-Game * game;
+Game * game; //so that it can be accest by other classes
 
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-   Game *  game = new Game();
-        game->show();
+   game = new Game();
+   game->show();
     return a.exec();
 }

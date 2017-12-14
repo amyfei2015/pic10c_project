@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QGraphicsTextItem>
 
+
 class player: public QGraphicsRectItem{
 
 private:
@@ -42,13 +43,12 @@ public:
 class treasure_collected: public QGraphicsTextItem{
 public:
     treasure_collected(QGraphicsTextItem * parent = 0);
-    void increase();
+    void shownewcount();
     int get_treasure();
-private:
-    int tc;
-};
+    static int treasure_count ;
+    };
 
-//int treasure_collected::tc = 0;
+
 
 //void add_soldier1 (int number);
 
