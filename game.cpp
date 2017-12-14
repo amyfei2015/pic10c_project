@@ -36,6 +36,17 @@ void player::keyPressEvent(QKeyEvent *event)
         if (typeid(*(colliding_items[i])) == typeid(treasure)){
             //remove treasure and treasure_count ++1;
             scene() -> removeItem(colliding_items[i]);
+            //increase treasure_collected
+
+            //how to call an object in abother class> how to conect these two?
+            //first try:
+            /*
+            tc -> increase(); // it doesn't work
+            */
+            //second try: in fact, I can/should make it a static int
+
+
+
             delete colliding_items[i];
         }
 
@@ -109,8 +120,8 @@ treasure_collected::treasure_collected(QGraphicsTextItem *parent):QGraphicsTextI
 
     //draw the text
     setPlainText(QString("Treasure collected:") + QString::number(tc));
-    setDefaultTextColor(Qt::black);
-    setFont(QFont("times",15));
+    setDefaultTextColor(Qt::blue);
+    setFont(QFont("times",16));
 
 }
 

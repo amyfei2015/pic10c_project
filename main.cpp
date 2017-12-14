@@ -4,7 +4,7 @@
 #include <QGraphicsView>
 #include <cstdlib>
 
-//Game * game;
+Game * game;
 
 
 int main(int argc, char *argv[])

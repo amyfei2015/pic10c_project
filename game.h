@@ -46,10 +46,9 @@ public:
     int get_treasure();
 private:
     int tc;
-
-
 };
 
+//int treasure_collected::tc = 0;
 
 //void add_soldier1 (int number);
 

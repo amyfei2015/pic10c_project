@@ -3,6 +3,7 @@
 #include <QGraphicsTextItem>
 #include <QFont>
 
+extern Game* game;
 
 Game::Game(QWidget *parent){
     srand(time(NULL));
@@ -68,11 +69,9 @@ Game::Game(QWidget *parent){
 
 
      //add a counter for trasure collected
-     /*
+
      treasure_collected* tc = new treasure_collected();
      scene -> addItem(tc);
-*/
-
 
 
      //make rect focusable
@@ -81,13 +80,6 @@ Game::Game(QWidget *parent){
 
 
 
-    //add a view
-    //QGraphicsView *view = new QGraphicsView(scene);
-
-
-    //set size of the screen no longer needed when it's put in gameboard.cpp
-    //view -> show();
-    //view-> setFixedSize(600,600);
 
 
     //set the position of the player at the middle of the scene
