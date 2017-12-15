@@ -45,10 +45,10 @@ Game::Game(QWidget *parent){
     //add army 1
     int number_soldier1 = 3;
     Army1 army1(3);
-    qDebug()<< "position 1\n";
+    //qDebug()<< "position 1\n";
     for (int i = 0;i<number_soldier1;++i)
         scene -> addItem (army1[i]);
-    qDebug()<< "position 2\n";
+    //qDebug()<< "position 2\n";
 
 
 
@@ -96,7 +96,7 @@ Game::Game(QWidget *parent){
     //set the position of the player at the middle of the scene
     plr->setPos(600/2-10,600/2-10);
 
-    qDebug()<<"position 3\n";
+    //qDebug()<<"position 3\n";
 }
 
 
