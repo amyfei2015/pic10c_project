@@ -28,8 +28,8 @@ Game::Game(QWidget *parent){
     scene -> addItem(plr);
 
 
-
 /*
+
     // add a soldier 1
      int number_1 = 3;
      std::vector<soldier1*> soldier1s;

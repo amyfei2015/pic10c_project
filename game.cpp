@@ -176,11 +176,20 @@ Army1::Army1(int number)
    }
 }
 
+/*
+ *It seems that destructor is called after GAME is constructed but before the main is entered
+ * How can we destruct them then??? At what time???
+ * And in fact, do we need destructors for them???(95% yes I guess)
+ * but why it gets destructed then???
+ * I could delete treasures after collliding, in codes, but why, is there somewhere I didn't do by reference???
+ * Anyway, fixed later
+
 Army1::~Army1()
 {
    qDebug()<< "destructor of army1 is called!!!";
             //for (auto x:army1) delete x;}
 }
+ */
 
 soldier1* Army1::operator[](int index) const
 {

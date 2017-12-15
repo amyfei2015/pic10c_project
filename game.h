@@ -64,7 +64,7 @@ private:
     vector<soldier1*> army1;
 public:
     Army1(int number);
-    ~Army1() ;
+    //~Army1() ;
     soldier1* operator[](int index) const;
 
 
