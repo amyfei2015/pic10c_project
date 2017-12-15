@@ -37,71 +37,21 @@ Game::Game(QWidget *parent){
    plr->setPos(600/2-10,600/2-10);
 
 
-
-/*
-    // add a soldier 1
-     int number_1 = 5;
-     std::vector<soldier1*> soldier1s;
-     for (int i = 0;i<number_1;i++){
-         soldier1s.push_back(new soldier1());
-         int s1 = rand() % 570 + 5 ;//we dont want soldiers to be at corners
-         int  s2 = rand() % 570 + 5 ;
-         soldier1s[i] -> setPos(s1,s2);
-         scene -> addItem (soldier1s[i]);
-     }
-
-
-    int number_1 = 5;
-    std::vector<soldier1*> soldier1s;
-    for (int i = 0;i<number_1;i++){
-        soldier1s.push_back(new soldier1());
-        int s1 = rand() % 570 + 5 ;//we dont want soldiers to be at corners
-        int  s2 = rand() % 570 + 5 ;
-        soldier1s[i] -> setPos(s1,s2);
-    }
-     Assume we have
-    group<soldier1> group_s1(3);
-    replacing vector... then we need
-
-    for (int i = 0;i<number_1;++i){
-         scene -> addItem (soldier1s[i]);
-    }
-
-    //if we got group setup, we could use a lambd function to avoid loops!
-*/
-    Army1 am1(3);
+    group<soldier1>  am1(3);
 //I tried to capture[scene] or [&scece] and It shows that 'scene' cannot be captured, so we probably cannot do the for_each and lambda function instead of using "scene -> addItem..."
-    for (int i = 0;i<3;++i){
-             //[ scene](soldier1* s){scene -> addItem(s);}(am1[i]);
-         scene -> addItem (am1[i]);
-        }
+    for (int i = 0;i<3;++i)
+        scene -> addItem (am1[i]);
+    //[ scene](soldier1* s){scene -> addItem(s);}(am1[i]);
 
 
+   group<soldier2> am2(5);
+   for (int i = 0;i<5;++i)
+        scene -> addItem (am2[i]);
 
-
-     //add soldier 2
-     int number_2 = 5;
-     std::vector<soldier2*> soldier2s;
-     for (int i = 0;i<number_2;i++){
-         soldier2s.push_back(new soldier2());
-         int s1 = rand() % 570 + 5 ;//we dont want soldiers to be at corners
-         int  s2 = rand() % 570 + 5 ;
-         soldier2s[i]->setPos(s1,s2);
-         scene -> addItem (soldier2s[i]);
-     }
-
-
-    //add treasure
-     int number_t = 5;
-     std::vector<treasure*> treasures;
-     for (int i = 0;i<number_t;i++){
-         treasures.push_back(new treasure());
-         int s1 = rand() % 570 + 5 ;//we dont want soldiers to be at corners
-         int  s2 = rand() % 570 + 5 ;
-         treasures[i]->setPos(s1,s2);
-         scene -> addItem (treasures[i]);
-     }
-
+   //add treasure
+   group<treasure> trea(5);
+   for (int i = 0;i<5;++i)
+        scene -> addItem (trea[i]);
 
 
      /* need to be fixed

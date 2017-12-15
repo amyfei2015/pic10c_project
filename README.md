@@ -50,14 +50,15 @@ Codes involved
 Knowledge relevent from pic10c class
 1. RAII/memory //not yet adjusted
     - try catch is used in constructor
-    - delete called in member function which is problematic
-    - destructors undone --> not sure what to do
+    - destructors undone --> not sure if we need to
  2. generic algorithm used with lambda function
     - tried in main, but as QGraphicScene cannot be captured in lambda function, we can't really use this in our program.
 3. templates
     - trying to do a template class
+    - It's working!
+    - It doen't save time for compiler as from wrting codes to produce three classes seperately, but it makes the codes shorter!
 4. functors & function pointers
-    - It haven't been employed. There is no need of comparison.
+    - It hasn't been employed. There is no need of comparison.
 5. polymorohism
     - It's not really involved
     - the player, soldier1, soldier2 and treasure classes are all developed from the QGraphicRecItem class, but evrything about polymorphism and inheritance is much done in the base class, not in the advanced ones.
@@ -66,9 +67,7 @@ Knowledge relevent from pic10c class
 
 
 
-12/14 Things left:
-1. adjust for foreach and lambda
-2. try using template
+12/15 Things left:
 3. show treasure collected
 4. add a proper ending to this game
 5. see how memory management works for Qt game design

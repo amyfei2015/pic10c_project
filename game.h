@@ -94,7 +94,9 @@ public:
 
 };
 
-
+//template class group<soldier1>;
+//template class group<soldier2>;
+//template class group<treasure>;
 
 #endif // GAME_H
 
