@@ -2,7 +2,7 @@
 #include <QTimer>
 #include <QGraphicsTextItem>
 #include <QFont>
-#include <functional> //is foreach here??
+#include <algorithm>
 
 
 
@@ -76,17 +76,19 @@ Game::Game(QWidget *parent){
  */
 
 
+//    for (int i = 0;i<3;++i){
+  //       scene -> addItem (am1[i]);
+    //}
+
+ //   for_each (am1.begin(),am1.end(),
+   //         [scene](soldier1* s){scene -> addItem(s);});
+
+
+    //I tried to capture[scene] or [&scece] and It shows that 'scene' cannot be captured, so we probably cannot do the for_each and lambda function instead of using "scene -> addItem..."
     for (int i = 0;i<3;++i){
+             //[ scene](soldier1* s){scene -> addItem(s);}(am1[i]);
          scene -> addItem (am1[i]);
-    }
-
-    //foreach (am1.begin(),am1.end(),
-      //      [](soldier1* s){scene -> addItem(s);});
-
-//forget which library for each is in, so try lambda  function first
- //   for (int i = 0;i<3;++i){
-   //          [](soldier1* s){scene -> addItem(s);}(am1[i]);
-     //   }
+        }
 
 
 
