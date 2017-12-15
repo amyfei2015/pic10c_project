@@ -29,9 +29,9 @@ Game::Game(QWidget *parent){
 
 
 
-
+/*
     // add a soldier 1
-     int number_1 = 5;
+     int number_1 = 3;
      std::vector<soldier1*> soldier1s;
      for (int i = 0;i<number_1;i++){
          soldier1s.push_back(new soldier1());
@@ -40,11 +40,21 @@ Game::Game(QWidget *parent){
          soldier1s[i] -> setPos(s1,s2);
          scene -> addItem (soldier1s[i]);
      }
+*/
+
+    //add army 1
+    int number_soldier1 = 3;
+    Army1 army1(3);
+    qDebug()<< "position 1\n";
+    for (int i = 0;i<number_soldier1;++i)
+        scene -> addItem (army1[i]);
+    qDebug()<< "position 2\n";
+
 
 
 
      //add soldier 2
-     int number_2 = 5;
+     int number_2 = 3;
      std::vector<soldier2*> soldier2s;
      for (int i = 0;i<number_2;i++){
          soldier2s.push_back(new soldier2());
@@ -57,7 +67,7 @@ Game::Game(QWidget *parent){
 
 
     //add treasure
-     int number_t = 5;
+     int number_t = 3;
      std::vector<treasure*> treasures;
      for (int i = 0;i<number_t;i++){
          treasures.push_back(new treasure());
@@ -70,8 +80,9 @@ Game::Game(QWidget *parent){
 
      //add a counter for trasure collected
 
-     treasure_collected* tc = new treasure_collected();
-     scene -> addItem(tc);
+     //treasure_collected* tc = new treasure_collected();
+     //tc = new treasure_collected();
+     //scene -> addItem(tc);
 
 
      //make rect focusable
@@ -85,6 +96,11 @@ Game::Game(QWidget *parent){
     //set the position of the player at the middle of the scene
     plr->setPos(600/2-10,600/2-10);
 
-
-
+    qDebug()<<"position 3\n";
 }
+
+
+// I could probablydo it, but before that, I should solve the memory leak
+template<typename object>
+vector<object*> make_object (int x);
+

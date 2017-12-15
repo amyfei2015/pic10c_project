@@ -11,13 +11,14 @@
 #include <QDebug>//for debuging
 
 extern Game* game;
+extern treasure_collected* tc;
 
 
 void player::keyPressEvent(QKeyEvent *event)
 {
 
 
-    //write the codes for player to move; make sure the player doesn't go out of screen
+    //write the codes for player to move; make sure the player doesn't go out of screen //change to switch case
     if (event -> key() == Qt::Key_Left){
         if (pos().x() > 0)
             setPos(x()-10,y());
@@ -51,10 +52,10 @@ void player::keyPressEvent(QKeyEvent *event)
             */
             //second try: in fact, I can/should make it a static int
             ++ treasure_collected::treasure_count;
-            game->tc->shownewcount();//need to be fixed
+            tc->shownewcount();//need to be fixed
 
 
-            delete colliding_items[i];
+            delete colliding_items[i];//not good approach??Can we adjust it?
         }
 
         if (typeid(*(colliding_items[i])) == typeid(soldier1)){
@@ -153,3 +154,35 @@ int treasure_collected::get_treasure()
     return treasure_count;
 }
 
+
+
+
+Army1::Army1(int number)
+{
+   for (int i = 0;i<number;++i){
+
+       //try{
+           army1.push_back(new soldier1());
+      /* }catch(std::exception &e)//not sure about the syntax???
+       {
+           delete army1[i];
+           army1[i] = nullptr;
+           throw;
+       }
+???*/
+       int s1 = rand() % 570 + 5 ;//we dont want soldiers to be at corners
+       int s2 = rand() % 570 + 5 ;
+       army1[i]->setPos(s1,s2);
+   }
+}
+
+Army1::~Army1()
+{
+   qDebug()<< "destructor of army1 is called!!!";
+            //for (auto x:army1) delete x;}
+}
+
+soldier1* Army1::operator[](int index) const
+{
+    return army1[index];
+}
