@@ -2,7 +2,7 @@
 For final project
 
 
-I WILL FINISH EVRYTHING BY FRADAY 5PM! IT'S STILL AN ONGOING PROJECT. 
+I WILL FINISH EVRYTHING BY FRADAY 8PM! IT'S STILL AN ONGOING PROJECT.
 
 After walting many Qt game tutorials and former c++ projects on Youtube, I decided to create a game, where players need to collect treasures without being caught by soldiers.
 
@@ -53,7 +53,7 @@ Knowledge relevent from pic10c class
     - delete called in member function which is problematic
     - destructors undone --> not sure what to do
  2. generic algorithm used with lambda function
-    - tried in main
+    - tried in main, but as QGraphicScene cannot be captured in lambda function, we can't really use this in our program.
 3. templates
     - trying to do a template class
 4. functors & function pointers

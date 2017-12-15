@@ -70,21 +70,7 @@ Game::Game(QWidget *parent){
     //if we got group setup, we could use a lambd function to avoid loops!
 */
     Army1 am1(3);
-/*so now we can try generic algorithm to avoid for loop
- *so we need to use begin() and end() to return pointers at the start and end of the vector storing the values
- *Then the iterators of vectors would take care of this
- */
-
-
-//    for (int i = 0;i<3;++i){
-  //       scene -> addItem (am1[i]);
-    //}
-
- //   for_each (am1.begin(),am1.end(),
-   //         [scene](soldier1* s){scene -> addItem(s);});
-
-
-    //I tried to capture[scene] or [&scece] and It shows that 'scene' cannot be captured, so we probably cannot do the for_each and lambda function instead of using "scene -> addItem..."
+//I tried to capture[scene] or [&scece] and It shows that 'scene' cannot be captured, so we probably cannot do the for_each and lambda function instead of using "scene -> addItem..."
     for (int i = 0;i<3;++i){
              //[ scene](soldier1* s){scene -> addItem(s);}(am1[i]);
          scene -> addItem (am1[i]);

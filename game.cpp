@@ -19,7 +19,6 @@ extern Game* game;
 void player::keyPressEvent(QKeyEvent *event)
 {
 
-
     //write the codes for player to move; make sure the player doesn't go out of screen
     if (event -> key() == Qt::Key_Left){
         if (pos().x() > 0)
@@ -39,6 +38,10 @@ void player::keyPressEvent(QKeyEvent *event)
         if (pos().y() < 580)
             setPos(x(),y()+10);
     }
+
+
+
+
 
     QList<QGraphicsItem *> colliding_items = collidingItems();
     for(int i = 0,n = colliding_items.size();i<n;++i){
@@ -171,6 +174,7 @@ Army1::Army1(int number)
 }
 
 //the three operators below are similar to how they work for a std::vector
+//the latter two would be used if we have for_each
 soldier1 * Army1::operator [](int index) const
 {
     return army1[index];
