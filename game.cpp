@@ -11,14 +11,13 @@
 #include <QDebug>//for debuging
 
 extern Game* game;
-extern treasure_collected* tc;
 
 
 void player::keyPressEvent(QKeyEvent *event)
 {
 
 
-    //write the codes for player to move; make sure the player doesn't go out of screen //change to switch case
+    //write the codes for player to move; make sure the player doesn't go out of screen
     if (event -> key() == Qt::Key_Left){
         if (pos().x() > 0)
             setPos(x()-10,y());
@@ -52,10 +51,10 @@ void player::keyPressEvent(QKeyEvent *event)
             */
             //second try: in fact, I can/should make it a static int
             ++ treasure_collected::treasure_count;
-            tc->shownewcount();//need to be fixed
+            //game->tc->shownewcount();//need to be fixed
 
 
-            //delete colliding_items[i];//not good approach??Can we adjust it?
+            delete colliding_items[i];
         }
 
         if (typeid(*(colliding_items[i])) == typeid(soldier1)){
@@ -155,43 +154,30 @@ int treasure_collected::get_treasure()
 }
 
 
-
-
-Army1::Army1(int number)
+template<typename Object>
+group<Object>::group(int number)
 {
-   for (int i = 0;i<number;++i){
+    for (int i = 0; i< number; ++i){
+        try{
+            g.push_back(new Object());
+        }catch(std::exception &e)
+        {
+            for (int j = i;j>=0;--j){
+                delete g[j];
+                g[j] = nullptr;
+                throw;
+            }
+        }
+        int s1 = rand() % 570 + 5 ;//we dont want soldiers to be at corners
+        int  s2 = rand() % 570 + 5 ;
+        g[i] -> setPos(s1,s2);
 
-       //try{
-           army1.push_back(new soldier1());
-      /* }catch(std::exception &e)//not sure about the syntax???
-       {
-           delete army1[i];
-           army1[i] = nullptr;
-           throw;
-       }
-???*/
-       int s1 = rand() % 570 + 5 ;//we dont want soldiers to be at corners
-       int s2 = rand() % 570 + 5 ;
-       army1[i]->setPos(s1,s2);
-   }
+
+    }
 }
 
-/*
- *It seems that destructor is called after GAME is constructed but before the main is entered
- * How can we destruct them then??? At what time???
- * And in fact, do we need destructors for them???(95% yes I guess)
- * but why it gets destructed then???
- * I could delete treasures after collliding, in codes, but why, is there somewhere I didn't do by reference???
- * Anyway, fixed later
-
-Army1::~Army1()
+template<typename Object>
+Object *group<Object>::operator [](int index) const
 {
-   qDebug()<< "destructor of army1 is called!!!";
-            //for (auto x:army1) delete x;}
-}
- */
-
-soldier1* Army1::operator[](int index) const
-{
-    return army1[index];
+    return g[index];
 }

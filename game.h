@@ -3,12 +3,6 @@
 #include <QGraphicsRectItem>
 #include <QObject>
 #include <QGraphicsTextItem>
-#include <QDebug>
-
-/*
- * @ The Player class
- * The player class is inherited from QGraphicsRectItem class,responding to keyboard directions
- */
 
 using std::vector;
 
@@ -59,18 +53,17 @@ public:
 
 //void add_soldier1 (int number);
 
-class Army1 {
+
+//in fact, I can make a template class so that I dont need to write it three times...
+template <typename Object>
+class  group{
 private:
-    vector<soldier1*> army1;
+    vector<Object*> g;
 public:
-    Army1(int number);
-    //~Army1() ;
-    soldier1* operator[](int index) const;
-
-
+    group<Object> (int number);
+    Object* operator [](int index) const;
 
 };
-
 
 
 
