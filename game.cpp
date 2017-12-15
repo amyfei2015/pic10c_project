@@ -55,6 +55,7 @@ void player::keyPressEvent(QKeyEvent *event)
 
 
             delete colliding_items[i];
+
         }
 
         if (typeid(*(colliding_items[i])) == typeid(soldier1)){
@@ -154,6 +155,39 @@ int treasure_collected::get_treasure()
 }
 
 
+
+Army1::Army1(int number)
+{
+    for (int i = 0; i< number; ++i){
+        try{
+            army1.push_back(new soldier1());
+        }catch(std::exception &e)
+        {
+            for (int j = i;j>=0;--j){
+                delete army1[j];
+                army1[j] = nullptr;
+                throw;
+            }
+        }
+        int s1 = rand() % 570 + 5 ;//we dont want soldiers to be at corners
+        int  s2 = rand() % 570 + 5 ;
+        army1[i] -> setPos(s1,s2);
+
+
+    }
+}
+
+
+soldier1 * Army1::operator [](int index) const
+{
+    return army1[index];
+}
+
+
+
+
+/*
+
 template<typename Object>
 group<Object>::group(int number)
 {
@@ -181,3 +215,4 @@ Object *group<Object>::operator [](int index) const
 {
     return g[index];
 }
+*/

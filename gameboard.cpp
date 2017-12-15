@@ -40,10 +40,30 @@ Game::Game(QWidget *parent){
          soldier1s[i] -> setPos(s1,s2);
          scene -> addItem (soldier1s[i]);
      }
-     */
+
+
+    int number_1 = 5;
+    std::vector<soldier1*> soldier1s;
+    for (int i = 0;i<number_1;i++){
+        soldier1s.push_back(new soldier1());
+        int s1 = rand() % 570 + 5 ;//we dont want soldiers to be at corners
+        int  s2 = rand() % 570 + 5 ;
+        soldier1s[i] -> setPos(s1,s2);
+    }
+     Assume we have
     group<soldier1> group_s1(3);
+    replacing vector... then we need
 
+    for (int i = 0;i<number_1;++i){
+         scene -> addItem (soldier1s[i]);
+    }
 
+    //if we got group setup, we could use a lambd function to avoid loops!
+*/
+    Army1 am1(3);
+    for (int i = 0;i<3;++i){
+         scene -> addItem (am1[i]);
+    }
 
 
 

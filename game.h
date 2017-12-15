@@ -51,7 +51,15 @@ public:
 
 
 
-//void add_soldier1 (int number);
+class  Army1{
+private:
+    vector<soldier1*> army1;
+public:
+    Army1 (int number);
+    soldier1* operator [](int index) const;
+
+};
+
 
 
 //in fact, I can make a template class so that I dont need to write it three times...
