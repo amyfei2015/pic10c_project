@@ -2,6 +2,7 @@
 #include <QTimer>
 #include <QGraphicsTextItem>
 #include <QFont>
+#include <functional> //is foreach here??
 
 
 
@@ -61,9 +62,24 @@ Game::Game(QWidget *parent){
     //if we got group setup, we could use a lambd function to avoid loops!
 */
     Army1 am1(3);
+/*so now we can try generic algorithm to avoid for loop
+ *so we need to use begin() and end() to return pointers at the start and end of the vector storing the values
+ *Then the iterators of vectors would take care of this
+ */
+
+
     for (int i = 0;i<3;++i){
          scene -> addItem (am1[i]);
     }
+
+    //foreach (am1.begin(),am1.end(),
+      //      [](soldier1* s){scene -> addItem(s);});
+
+//forget which library for each is in, so try lambda  function first
+ //   for (int i = 0;i<3;++i){
+   //          [](soldier1* s){scene -> addItem(s);}(am1[i]);
+     //   }
+
 
 
 
@@ -75,8 +91,13 @@ Game::Game(QWidget *parent){
          int s1 = rand() % 570 + 5 ;//we dont want soldiers to be at corners
          int  s2 = rand() % 570 + 5 ;
          soldier2s[i]->setPos(s1,s2);
-         scene -> addItem (soldier2s[i]);
+         //scene -> addItem (soldier2s[i]);
      }
+
+     //well, showing that 'this' cannot be implicitly captured in this contect
+     for (int i = 0;i<3;++i){
+              [](soldier2* s){scene -> addItem(s);}(soldier2s[i]);
+         }
 
 
 

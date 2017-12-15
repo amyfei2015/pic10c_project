@@ -183,6 +183,16 @@ soldier1 * Army1::operator [](int index) const
     return army1[index];
 }
 
+vector<soldier1*>::iterator Army1::begin()
+{
+    return army1.begin();
+}
+
+vector<soldier1*>::iterator Army1::end()
+{
+    return army1.end();
+}
+
 
 
 

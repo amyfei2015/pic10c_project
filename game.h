@@ -57,6 +57,8 @@ private:
 public:
     Army1 (int number);
     soldier1* operator [](int index) const;
+    vector<soldier1*>::iterator begin();
+    vector<soldier1*>::iterator end();
 
 };
 
