@@ -12,7 +12,10 @@
 
 extern Game* game;
 
-
+/* The player responds to directions
+ * When it confronts a soldier, it's sent back to its initial position;
+ * When it confronts a treasurem it picks the trasure so that the treasure is removed from scene and the count increments
+ */
 void player::keyPressEvent(QKeyEvent *event)
 {
 
@@ -42,8 +45,10 @@ void player::keyPressEvent(QKeyEvent *event)
         if (typeid(*(colliding_items[i])) == typeid(treasure)){
             //remove treasure and treasure_count ++1;
             scene() -> removeItem(colliding_items[i]);
-            //increase treasure_collected
 
+
+            {//work needs t be done here
+            //increase treasure_collected
             //how to call an object in abother class> how to conect these two?
             //first try:
             /*
@@ -53,41 +58,32 @@ void player::keyPressEvent(QKeyEvent *event)
             ++ treasure_collected::treasure_count;
             //game->tc->shownewcount();//need to be fixed
 
+            }
 
             delete colliding_items[i];
 
         }
 
-        if (typeid(*(colliding_items[i])) == typeid(soldier1)){
-            //move back player to center, lives lost one
-            setPos(600/2-10,600/2-10);
-        }
-
-        if (typeid(*(colliding_items[i])) == typeid(soldier2)){
-            //remove treasure and treasure_count ++1;
+        if (typeid(*(colliding_items[i])) == typeid(soldier1) || typeid(*(colliding_items[i])) == typeid(soldier2)){
             //move back player to center, lives lost one
             setPos(600/2-10,600/2-10);
         }
 
     }
-
-
 }
 
 
 soldier1::soldier1()
 {
    setRect(0,0,15,25);
-
 }
 
 
-
+//soldier2 keeps moving upwards after being generated and returns from the bottom of the scene after it leaves from the top of the scene
 soldier2::soldier2()
 {
 
     setRect(0,0,20,25);
-
 
     //keep it moving
     QTimer * timer = new QTimer();
@@ -96,7 +92,7 @@ soldier2::soldier2()
 
 }
 
-
+//helper function to define move
 void soldier2::random_move(){
     setPos(x(),y()-10);
     if (y() <0)
@@ -104,18 +100,6 @@ void soldier2::random_move(){
 }
 
 
-/*
-void add_soldier1(int number)
-{
-    std::vector<soldier1*> soldier1s;
-    for (size_t i = 0;i<number;i++){
-        soldier1s.push_back(new soldier1());
-        scene() -> addItem (soldier1s[i]);
-    }
-
-}
-
-*/
 
 treasure::treasure()
 {
@@ -134,8 +118,16 @@ treasure_collected::treasure_collected(QGraphicsTextItem *parent):QGraphicsTextI
 
 }
 
+//static variable defined outside function
 int treasure_collected :: treasure_count = 0;
 
+
+/*This is the part to be fixed
+ * it it's turned to a static function, the codes do not work
+ * but if it's an object, how do Irefer to it before it's created?
+ * probably whole thing should be made into the player class?
+ *
+ */
 void treasure_collected::shownewcount()
 {
 
@@ -148,14 +140,15 @@ void treasure_collected::shownewcount()
 }
 
 
-
+//it's not used yet and may be deleted later
 int treasure_collected::get_treasure()
 {
     return treasure_count;
 }
 
 
-
+//here we genrate a group of soldiers and assign their positions randomly
+//Note that the positions cannot be decided in constructor as different scales are used there
 Army1::Army1(int number)
 {
     for (int i = 0; i< number; ++i){
@@ -177,7 +170,7 @@ Army1::Army1(int number)
     }
 }
 
-
+//the three operators below are similar to how they work for a std::vector
 soldier1 * Army1::operator [](int index) const
 {
     return army1[index];
@@ -197,7 +190,6 @@ vector<soldier1*>::iterator Army1::end()
 
 
 /*
-
 template<typename Object>
 group<Object>::group(int number)
 {
