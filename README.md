@@ -1,9 +1,6 @@
 # pic10c_project
 For final project
 
-
-I WILL FINISH EVRYTHING BY FRADAY 8PM! IT'S STILL AN ONGOING PROJECT.
-
 After walting many Qt game tutorials and former c++ projects on Youtube, I decided to create a game, where players need to collect treasures without being caught by soldiers.
 
 
@@ -16,7 +13,7 @@ When we run the codes, we would see many rectangular shapes:
     - It's initially set at the center of the gameboard
     - when it collides with a treasure, it collects it and the count increments
     - when it collides with a soldier, no matter which type, it's sent back to its initial position
-    - when all treasures are collected, something happens? (this part not finished)
+    - when all treasures are collected, something happens? (this part is not finished)
 
 2. a 25*15 rectangle
     - soldier1
@@ -48,9 +45,9 @@ Codes involved
     - for compilation
 
 Knowledge relevent from pic10c class
-1. RAII/memory //not yet adjusted
+1. RAII/memory
     - try catch is used in constructor
-    - destructors undone --> not sure if we need to
+    - destructors are not needed, as all pointers are created on stack, and the momory will be managed when "game" is deleted.
  2. generic algorithm used with lambda function
     - tried in main, but as QGraphicScene cannot be captured in lambda function, we can't really use this in our program.
 3. templates
@@ -75,10 +72,7 @@ Codes that I tried but failed to work:
         1. add another layer of .h and .cpp files where timer controls the excecution of gameboard.cpp
         2. use some Qt functions instead. (I tried QTimer but failed to make it working)
         
-        
-        12/15 Things left:
-        5. see how memory management works for Qt game design
-        
+
 
         
     
