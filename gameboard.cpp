@@ -1,10 +1,12 @@
 #include "gameboard.h"
-#include <QTimer>
 #include <QGraphicsTextItem>
 #include <QFont>
 #include <algorithm>
+#include <QDebug>
+#include <ctime>
+#include <cstdlib>
 
-
+clock_t startTime;
 
 Game::Game(QWidget *parent){
     srand(time(NULL));
@@ -54,12 +56,8 @@ Game::Game(QWidget *parent){
         scene -> addItem (trea[i]);
 
 
-     /* need to be fixed
-     treasure_collected* tc = new treasure_collected();
-     scene -> addItem(tc);
-*/
+    startTime = clock();
 
-
-
+    qDebug()<<"gameboard";
 
 }

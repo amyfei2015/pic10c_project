@@ -50,7 +50,7 @@ void player::keyPressEvent(QKeyEvent *event)
             scene() -> removeItem(colliding_items[i]);
 
 
-            {//work needs t be done here
+            //work needs t be done here
             //increase treasure_collected
             //how to call an object in abother class> how to conect these two?
             //first try:
@@ -61,7 +61,7 @@ void player::keyPressEvent(QKeyEvent *event)
             ++ treasure_collected::treasure_count;
             //game->tc->shownewcount();//need to be fixed
 
-            }
+
 
             /*No matter whether the destructor is needed, we don't need this line.
              * if destructor is not needed, we do not need to delete treasure here either;
@@ -134,7 +134,7 @@ int treasure_collected :: treasure_count = 0;
  * but if it's an object, how do Irefer to it before it's created?
  * probably whole thing should be made into the player class?
  *
- */
+
 void treasure_collected::shownewcount()
 {
 
@@ -153,7 +153,7 @@ int treasure_collected::get_treasure()
     return treasure_count;
 }
 
-
+*/
 
 
 //here we genrate a group of soldiers or treasure and assign their positions randomly
@@ -196,3 +196,7 @@ Object *group<Object>::operator [](int index) const
 template class group<soldier1>;
 template class group<soldier2>;
 template class group<treasure>;
+
+
+//helper function to end the game
+

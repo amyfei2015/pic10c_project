@@ -58,8 +58,8 @@ public:
 class treasure_collected: public QGraphicsTextItem{
 public:
     treasure_collected(QGraphicsTextItem * parent = 0);
-    void shownewcount();
-    int get_treasure();
+    //void shownewcount();
+    //int get_treasure();
     static int treasure_count ;
     };
 
@@ -97,6 +97,9 @@ public:
 //template class group<soldier1>;
 //template class group<soldier2>;
 //template class group<treasure>;
+
+
+
 
 #endif // GAME_H
 
