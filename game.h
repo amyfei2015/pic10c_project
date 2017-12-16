@@ -79,8 +79,8 @@ public:
 
 /* treasure_collected
  *
- * It's meant to show the treasure collected, but I haven't be able to increment the number yet
-
+ * It's meant to show the treasure collected, but I haven't be able to show the incremented umber yet
+*/
 class treasure_collected: public QGraphicsTextItem{
 public:
     treasure_collected(QGraphicsTextItem * parent = 0);
@@ -88,7 +88,7 @@ public:
     //int get_treasure();
     static int treasure_count ;
     };
-*/
+
 #endif // GAME_H
 
 

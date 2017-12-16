@@ -2,7 +2,7 @@
 #include <QGraphicsTextItem>
 #include <QFont>
 #include <algorithm>
-#include <QDebug>
+//#include <QDebug>
 #include <ctime>
 #include <cstdlib>
 

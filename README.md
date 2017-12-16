@@ -14,7 +14,7 @@ When we run the codes, we would see many rectangular shapes:
     - player
     - It responds to direction keys, and can never move out of the console
     - It's initially set at the center of the gameboard
-    - when it collides with a treasure, it collects it and the count increments  (this part not finished)
+    - when it collides with a treasure, it collects it and the count increments
     - when it collides with a soldier, no matter which type, it's sent back to its initial position
     - when all treasures are collected, something happens? (this part not finished)
 
@@ -66,23 +66,20 @@ Knowledge relevent from pic10c class
     - the soldier1 and soldier2 classes do look similar, but there is rather no need of having soldier2 inherited from soldier1 class. Soldier1 class has no private variables nor even other functions - there is probably nothing to inherit.
 
 
-
-12/15 Things left:
-3. show treasure collected
-4. add a proper ending to this game
-5. see how memory management works for Qt game design
-
-
 Codes that I tried but failed to work:
 1. treasure_collected
-    - I could return the number of treasure
+    - Problem:I could return the number of treasure, but not to show the text to the scene when the number is updated......
 2. timer
     - Problem: could set up a nice timer, but the timer needs to be working during the time the program is excecuted, which was the line "a.exec". However,  I can't make the timer start in main, get everything played, and then respond to it. If I put the timer before the line a.exec, it takes 10 seconds to start the game; if I put it after a.exec, the timer starts when I close the window.
-    - Possible solution
+    - Possible solutions
         1. add another layer of .h and .cpp files where timer controls the excecution of gameboard.cpp
         2. use some Qt functions instead. (I tried QTimer but failed to make it working)
         
         
+        12/15 Things left:
+        5. see how memory management works for Qt game design
+        
+
         
     
 

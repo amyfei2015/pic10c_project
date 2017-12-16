@@ -48,20 +48,8 @@ void player::keyPressEvent(QKeyEvent *event)
         if (typeid(*(colliding_items[i])) == typeid(treasure)){
             //remove treasure and treasure_count ++1;
             scene() -> removeItem(colliding_items[i]);
-
-
-            //work needs t be done here
-            //increase treasure_collected
-            //how to call an object in abother class> how to conect these two?
-            //first try:
-            /*
-            tc -> increase(); // it doesn't work
-            */
-            //second try: in fact, I can/should make it a static int
-            //++ treasure_collected::treasure_count;
-            //game->tc->shownewcount();//need to be fixed
-
-
+            ++treasure_collected :: treasure_count;
+            qDebug()<<treasure_collected :: treasure_count;
         }
 
         if (typeid(*(colliding_items[i])) == typeid(soldier1) || typeid(*(colliding_items[i])) == typeid(soldier2)){
@@ -160,7 +148,7 @@ template class group<treasure>;
 /*This is the part that doesn't work
  * it it's turned to a static function, the codes do not work
  * but if it's an object, how do I refer to it before it's created?
- *
+ */
 
 
 treasure_collected::treasure_collected(QGraphicsTextItem *parent):QGraphicsTextItem(parent){
@@ -177,23 +165,4 @@ treasure_collected::treasure_collected(QGraphicsTextItem *parent):QGraphicsTextI
 int treasure_collected :: treasure_count = 0;
 
 
-void treasure_collected::shownewcount()
-{
-
-    setPlainText(QString("Treasure collected:") + QString::number(treasure_collected::treasure_count));
-    setDefaultTextColor(Qt::blue);
-    setFont(QFont("times",16));
-
-
-    qDebug()<<"wrong?";
-}
-
-
-//it's not used yet and may be deleted later
-int treasure_collected::get_treasure()
-{
-    return treasure_count;
-}
-
-*/
 
