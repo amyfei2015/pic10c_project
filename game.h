@@ -51,39 +51,13 @@ public:
 
 };
 
-/* treasure_collected
+
+
+/* Group
  *
- * It's meant to show the treasure collected, but I haven't be able to increment the number yet
+ * It's a template class which can be used to generate groups of objects,eg.soldier1;
+ * I use vector to store pointers to the objects saved here.
  */
-class treasure_collected: public QGraphicsTextItem{
-public:
-    treasure_collected(QGraphicsTextItem * parent = 0);
-    //void shownewcount();
-    //int get_treasure();
-    static int treasure_count ;
-    };
-
-
-/* Army1
- *
- * It's a collection of soldier1
- * I use vector to store pointers to the soldier1s created.
- */
-class  Army1{
-private:
-    vector<soldier1*> army1;
-public:
-    Army1 (int number);
-    soldier1* operator [](int index) const;
-    vector<soldier1*>::iterator begin();
-    vector<soldier1*>::iterator end();
-
-};
-
-
-
-//in fact, I can make a template class so that I dont need to write it three times...
-//but haven't succeed yet
 template <typename Object>
 class  group{
 private:
@@ -94,13 +68,27 @@ public:
 
 };
 
-//template class group<soldier1>;
-//template class group<soldier2>;
-//template class group<treasure>;
 
 
 
 
+
+
+
+
+
+/* treasure_collected
+ *
+ * It's meant to show the treasure collected, but I haven't be able to increment the number yet
+
+class treasure_collected: public QGraphicsTextItem{
+public:
+    treasure_collected(QGraphicsTextItem * parent = 0);
+    //void shownewcount();
+    //int get_treasure();
+    static int treasure_count ;
+    };
+*/
 #endif // GAME_H
 
 

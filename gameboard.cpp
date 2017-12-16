@@ -6,7 +6,6 @@
 #include <ctime>
 #include <cstdlib>
 
-clock_t startTime;
 
 Game::Game(QWidget *parent){
     srand(time(NULL));
@@ -55,9 +54,5 @@ Game::Game(QWidget *parent){
    for (int i = 0;i<5;++i)
         scene -> addItem (trea[i]);
 
-
-    startTime = clock();
-
-    qDebug()<<"gameboard";
 
 }

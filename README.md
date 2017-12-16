@@ -73,6 +73,21 @@ Knowledge relevent from pic10c class
 5. see how memory management works for Qt game design
 
 
+Codes that I tried but failed to work:
+1. treasure_collected
+    - I could return the number of treasure
+2. timer
+    - Problem: could set up a nice timer, but the timer needs to be working during the time the program is excecuted, which was the line "a.exec". However,  I can't make the timer start in main, get everything played, and then respond to it. If I put the timer before the line a.exec, it takes 10 seconds to start the game; if I put it after a.exec, the timer starts when I close the window.
+    - Possible solution
+        1. add another layer of .h and .cpp files where timer controls the excecution of gameboard.cpp
+        2. use some Qt functions instead. (I tried QTimer but failed to make it working)
+        
+        
+        
+    
+
+
+
 
 
 

@@ -58,16 +58,9 @@ void player::keyPressEvent(QKeyEvent *event)
             tc -> increase(); // it doesn't work
             */
             //second try: in fact, I can/should make it a static int
-            ++ treasure_collected::treasure_count;
+            //++ treasure_collected::treasure_count;
             //game->tc->shownewcount();//need to be fixed
 
-
-
-            /*No matter whether the destructor is needed, we don't need this line.
-             * if destructor is not needed, we do not need to delete treasure here either;
-             * if the destructor is needed, the destructor will handle the momory.
-             */
-            //delete colliding_items[i];
 
         }
 
@@ -115,47 +108,6 @@ treasure::treasure()
 
 
 
-treasure_collected::treasure_collected(QGraphicsTextItem *parent):QGraphicsTextItem(parent){
-    //initialize the number to 0
-
-    //draw the text
-    setPlainText(QString("Treasure collected:") + QString::number(treasure_count));
-    setDefaultTextColor(Qt::blue);
-    setFont(QFont("times",16));
-
-}
-
-//static variable defined outside function
-int treasure_collected :: treasure_count = 0;
-
-
-/*This is the part to be fixed
- * it it's turned to a static function, the codes do not work
- * but if it's an object, how do Irefer to it before it's created?
- * probably whole thing should be made into the player class?
- *
-
-void treasure_collected::shownewcount()
-{
-
-    setPlainText(QString("Treasure collected:") + QString::number(treasure_collected::treasure_count));
-    setDefaultTextColor(Qt::blue);
-    setFont(QFont("times",16));
-
-
-    qDebug()<<"wrong?";
-}
-
-
-//it's not used yet and may be deleted later
-int treasure_collected::get_treasure()
-{
-    return treasure_count;
-}
-
-*/
-
-
 //here we genrate a group of soldiers or treasure and assign their positions randomly
 //Note that the positions cannot be decided in constructor as different scales are used there
 template<typename Object>
@@ -198,5 +150,50 @@ template class group<soldier2>;
 template class group<treasure>;
 
 
-//helper function to end the game
+
+
+
+
+
+
+
+/*This is the part that doesn't work
+ * it it's turned to a static function, the codes do not work
+ * but if it's an object, how do I refer to it before it's created?
+ *
+
+
+treasure_collected::treasure_collected(QGraphicsTextItem *parent):QGraphicsTextItem(parent){
+    //initialize the number to 0
+
+    //draw the text
+    setPlainText(QString("Treasure collected:") + QString::number(treasure_count));
+    setDefaultTextColor(Qt::blue);
+    setFont(QFont("times",16));
+
+}
+
+//static variable defined outside function
+int treasure_collected :: treasure_count = 0;
+
+
+void treasure_collected::shownewcount()
+{
+
+    setPlainText(QString("Treasure collected:") + QString::number(treasure_collected::treasure_count));
+    setDefaultTextColor(Qt::blue);
+    setFont(QFont("times",16));
+
+
+    qDebug()<<"wrong?";
+}
+
+
+//it's not used yet and may be deleted later
+int treasure_collected::get_treasure()
+{
+    return treasure_count;
+}
+
+*/
 
